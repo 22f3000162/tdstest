@@ -3,7 +3,7 @@ name: Daily Commit
 on:
   schedule:
     # This cron is set to run ~2 minutes from now (UTC)
-    - cron: '29 11 * * *'
+    - cron: '42 11 * * *'
   workflow_dispatch:
 permissions:
   contents: write
@@ -16,10 +16,10 @@ jobs:
         with:
           ref: main 
 
-      - name: Configure Git - 22f3000162@ds.study.iim.ac.in
+      - name: Configure Git - 22f3000162@ds.study.iitm.ac.in
         run: |
           git config user.name "auto-commit"
-          git config user.email "22f3000162@ds.study.iim.ac.in"
+          git config user.email "22f3000162@ds.study.iitm.ac.in"
 
       - name: Make a dummy commit
         run: |

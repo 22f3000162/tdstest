@@ -2,7 +2,7 @@ name: Daily Commit
 
 on:
   schedule:
-    - cron: '24 13 * * *'  # 18:41 IST
+    - cron: '34 10 * * *'  # 18:41 IST
   workflow_dispatch:
 permissions:
   contents: write

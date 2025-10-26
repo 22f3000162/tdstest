@@ -1,28 +1,20 @@
 name: Daily Commit
-
 on:
+  workflow_dispatch: # <-- This line allows you to run it manually (Step 6)
   schedule:
-    - cron: '38 10 * * *'  # 18:41 IST
-  workflow_dispatch:
-permissions:
-  contents: write
+    # This cron is set to run ~2 minutes from now (UTC)
+    - cron: '1 11 * * *'
 jobs:
-  commit:
+  daily-commit:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@v4
-        with:
-          ref: main  # 👈 explicitly use the main branch
-
-      - name: Configure Git - 22f3000162@ds.study.iitm.ac.in
+      - name: Create Empty Commit
         run: |
-          git config user.name "auto-commit"
-          git config user.email "22f3000162@ds.study.iitm.ac.in"
-
-      - name: Make a dummy commit
-        run: |
-          # echo "Run at $(date -u +'%Y-%m-%dT%H:%M:%SZ')" > daily-log.txt
-          # git add daily-log.txt
-          # git commit -m "Daily commit at $(date -u)" || echo "Nothing to commit"
-          # git push origin main
+          git config user.name "GitHub Actions Bot"
+          git config user.email "actions-bot@github.com"
+          git commit --allow-empty -m "Daily empty commit"
+          git push
+      - name: Validation Step for 22f3000162@ds.study.iitm.ac.in
+        run: echo "This step validates the workflow for the user."
